@@ -16,7 +16,5 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Change working directory to bot
-      run: cd bot
     - name: Build the Docker image
-      run: docker build . --tag ${{ github.event.inputs.imagename }}:$(date +%s)
+      run: docker build -f ./bot/Dockerfile ./bot --tag ${{ github.event.inputs.imagename }}:$(date +%s)
